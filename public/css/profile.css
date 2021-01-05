@@ -1,0 +1,89 @@
+.tox-statusbar{
+    display:none !important;
+}
+.tox-notification{
+    display:none !important;
+}
+.tox-editor-header{
+    display:"";
+}
+
+.tox ,.tox-tinymce, #title{
+    border:none !important;
+}
+hr{
+    border:         none;
+    
+    height: 4em;
+    width:  4px; 
+    background-color: #FF5852;
+    transition: all .8s ease-in-out;
+}
+
+hr:hover{
+    background-color: #9E44C4;
+    height:4em;
+}
+
+
+#title{
+    margin: 1em 1em;
+}
+
+.green{
+    background-color:#3DCD49
+}
+.blue{
+    background-color:#0089D7
+}
+.purple{
+    background-color: #9E44C4;
+
+}
+
+.CriarTitulo span::before{
+    width:8em;
+    height: 3px;
+    content: "";
+    border-radius: 2px;
+    background: linear-gradient(130deg,#ff7a18,#af002d 41.07%,#319197 76.05%);
+    animation: pulse 0.2s forwards ;    
+    filter: grayscale(30%) opacity(0.4); 
+    animation-iteration-count: 10;
+}
+
+.form{
+  background:white;
+  border-radius:1em;
+}
+
+
+@keyframes pulse {
+  0% {
+    background: linear-gradient(130deg,#ff7a18,#af002d 41.07%,#319197 76.05%);
+  }
+  25% {
+    background: linear-gradient(130deg,#ff7a18,#af002d 41.07%,#319197 76.05%);
+  }
+  50% {
+    background: linear-gradient(130deg,#af002d,#319197 41.07%,#ff7a18 76.05%);
+  }
+  75%{
+    background: linear-gradient(130deg,#af002d,#319197 41.07%,#ff7a18 76.05%);  
+  }
+  100% {
+    background: linear-gradient(130deg,#319197,#ff7a18 41.07%,#af002d 76.05%);  
+  }
+}
+
+.CriarTitulo h1{
+    text-align: center;
+}
+
+.CriarTitulo span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+}
+

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Profile</title>
+        <!--Tiny MCE-->
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+        
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        
+        <!--Custom CSS--> 
+        <link href="/css/profile.css" rel="stylesheet" type="text/css">
+        <link href="/css/navbar.css" rel="stylesheet" type="text/css">
+
+        <!--Page Icon--> 
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        
+    </head>
+    <body onload="execute()">
+        <%- include('partials/nav') %>
+        <div class="container form ">
+            
+            
+            <main class="mt-2">
+                <div class="CriarTitulo">
+                    <h1 > Criar Post</h1>
+                    <span></span>
+                </div>
+                <form class="postagem" action="/profile/postagens/nova" method="POST">
+                    
+                            <div class="row">
+                               
+                                <div class="col-10">
+                                    <input class="ml-2" name="title" id="title"style="font-size:24px; outline:none" placeholder=" Título" onfocus="myfunction()" onfocusout="myfunctionout()" required></input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-10">
+                                    <select name="categoria" style="font-size:24px;" id="categoria" class="custom-select mt-4 mb-4" onfocus="myfunction()" onfocusout="myfunctionout()">
+                                        
+                                        <% categorias.forEach(function(categoria){ %>
+                                            <option value=<%= categoria._id %> ><%=categoria.categoria%></option> 
+                                        <%}) %>
+                                    </select></div>
+                                </div>
+                            <div class="row">
+                                
+                                <div class="col-10" >
+                                    <textarea id="texto" name="body" id="body" class="ml-2 " placeholder="Escreva aqui seu post" >      </textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-outline-success"><i class="fas fa-2x fa-broom"></i> <span style="font-size:24px;">Publicar</span></button>
+                                    <button type="button" class="btn btn-outline-danger" onclick="mostrar()"><i class="fab fa-2x fa-dev"></i></button>
+                                </div>
+                            </div>
+                   
+                
+                </form>    
+            </main>
+        </div>
+        </div>
+    </body>
+    <script>
+        function execute(){
+            const editorheader = document.querySelector('.tox-editor-header');
+            if(editorheader.style.display==""){
+                editorheader.style.display="none";
+            }
+        }
+
+        function mostrar(){
+            
+            const editorheader = document.querySelector('.tox-editor-header');
+            
+            
+            if(editorheader.style.display==""){
+                editorheader.style.display="none";
+            }else{
+                editorheader.style.display="";
+            }
+
+            
+
+        }
+        function myfunction(){
+            
+            var x = document.getElementById("hid");
+            var y = document.getElementById("hidbody");
+            var z = document.getElementById("hidcategoria");
+            
+            const element = document.querySelector('.hr');
+           
+
+           
+
+            if(z.style.display=="none"){
+                z.style.display="";
+                element.classList.add('animate__animated', 'animate__flash');
+                
+            }
+            if(x.style.display=="none"){
+                x.style.display="";
+                
+            }
+            if(y.style.display=="none"){
+                y.style.display="";
+            }
+            
+        }
+
+        function myfunctionout(){
+            var x = document.getElementById("hid");
+            var y = document.getElementById("hidbody");
+            var z = document.getElementById("hidcategoria");
+            
+            if(z.style.display==""){
+                z.style.display="none";
+                
+            }
+           
+            if(x.style.display==""){
+                x.style.display="none";
+            }
+            if(y.style.display==""){
+                y.style.display="none";
+            }
+            
+        }
+        
+        tinymce.init({
+            selector:"#texto",
+            content_style: ".mce-content-body {font-size:24px;font-family:Times New Roman, Times, serif;}",
+           
+
+            menu: {
+            view: {title: 'Happy', items: 'code'}
+            },
+            plugins: 'code image',
+            mobile: {
+              theme: 'silver'
+              
+            },
+           
+        });
+
+      
+        
+    </script>
+</html>

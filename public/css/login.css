@@ -1,0 +1,80 @@
+
+.login-master{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-evenly;
+}
+/*Center it*/
+.login-container{
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-list{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.icon{
+    position: relative;
+    list-style: none;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 30px;
+    transform: rotate(-30deg) skew(25deg); 
+    background: #ccc;
+}
+
+.icon span{ 
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgb(255, 255, 255);
+    transition: 0.5s;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: rgb(41, 36, 36);
+    font-size: 2.5rem !important;
+}
+
+.icon:hover span:nth-child(5){
+    transform: translate(2.8rem,-2.8rem);
+    opacity:1;
+}
+.icon:hover span:nth-child(4){
+    transform: translate(2.2rem,-2.2rem);
+    opacity:.8;
+}
+.icon:hover span:nth-child(3){
+    transform: translate(1.6rem,-1.6rem);
+    opacity:.6;
+}
+.icon:hover span:nth-child(2){
+    transform: translate(1rem,-1rem);
+    opacity:.4;
+}
+.icon:hover span:nth-child(1){
+    transform: translate(0.6rem,-0.6rem);
+    opacity:.2;
+}
+
+
+.icon:hover .google{
+    color: #FF6961;
+}
+
+.icon:hover .facebook{
+    color: #486cba;
+}

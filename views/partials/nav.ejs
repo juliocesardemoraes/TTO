@@ -1,0 +1,34 @@
+<nav class="navbar">
+    <ul class="navbar-nav">
+            <li class="logo">
+                <a href="/" class="nav-link">
+                    <i class="fa fa-code fa-lg fa-primary fa-secundary" aria-hidden="true"></i>
+                    <span class="link-text">TTO</span>
+                </a>
+            </li>
+            
+            <% if(user) {%>
+                <li class="nav-item">
+                    <a href="/profile" class="nav-link">
+                        <i class="fa fa-address-card fa-lg fa-success " aria-hidden="true"></i>
+                        <span class="link-text">Perfil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/auth/logout" class="nav-link">
+                        <i id="invert" class="fas fa-sign-out-alt fa-lg  fa-danger  " aria-hidden="true"></i>
+                        <span class="link-text">Logout</span>
+                    </a>
+                </li>
+            
+            <%} else {%>
+               
+                <li class="nav-item">
+                    <a href="/auth/login" class="nav-link">
+                        <i class="fas fa-sign-in-alt fa-lg fa-primary fa-success" aria-hidden="true"></i>
+                        <span class="link-text">Login</span>
+                    </a>
+                </li>
+            <%} %>
+    </ul>
+</nav>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>New TTO</title>
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <!--Google FOnts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"> 
+        <!--Font Awesome Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <!--Page Icon-->
+        <link rel="icon" type="image/png"  href="https://img.icons8.com/fluent/48/000000/code.png" >  
+        <!--Custom CSS--> 
+        <link href="/css/navbar.css" rel="stylesheet" type="text/css">
+        <link href="/css/home-posts.css" rel="stylesheet" type="text/css">
+        
+    </head>
+    <body>
+        <%- include('partials/nav') %>
+
+        <% let i=0; postagens.forEach(function(postagem){ %>
+        
+        <header class="article-header ">
+                
+                <% users.forEach(function(user){ %>
+                    <% if(user.id == postagem.author){ %>
+                      <img src = <%= user.thumbnail %> >
+                      <div class="article-text-header">
+                        <h4 class="ml-1"> <%=user.username %> Diz:</h4>
+                        <h1><%=postagem.title%></h1>
+                      </div>
+                   <% } %>
+                <%})%>
+            
+        </header>
+
+        <div class="container mb-2 p-4 posts shadow">
+            
+            <main>
+                        <%-postagem.body %>
+                        
+                        <% categorias.forEach(function(categoria){ %>
+                            <% if(categoria.id == postagem.categoria){ %>
+                              <h5>Categoria: <%= categoria.categoria %></h5>
+                           <% } %>
+                        <%})%>
+                        
+            </main>
+            <div class="article-footer">
+                <div class="hidden-votes">
+                    
+                        <div class="likes-blob ml-footer <%= i %> " ><span class="numbers"></span></div>
+                    
+                </div>
+                <div class="icon-footer">
+                    <form action="/like" method="POST"> 
+                        <input id="body" name="body" type="hidden" value=<%=postagem._id%>>
+                        <button type="submit"><i class="fa fa-2x fa-thumbs-up like-icon ml-footer" onmouseover="appear( '<%=i%>' )" onmouseout="disappear('<%=i%>')" aria-hidden="true"></i></button>
+                    </form>
+                    <i class="fa fa-2x fa-thumbs-down dislike-icon" onmouseover="appear('<%=i%>' )" onmouseout="disappear('<%=i%>')" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        
+        
+        <%i++;%>
+        <%}) %>
+            
+    
+    
+    <script>
+        function appear(index){
+            
+            
+
+            let x = document.getElementsByClassName(index);
+            
+            x[0].style.display = 'inline-block';
+            
+
+        }
+
+        function disappear(index){
+            let x = document.getElementsByClassName(index);
+            
+            x[0].style.display = ''
+        }
+    </script>
+    </body>
+</html>
