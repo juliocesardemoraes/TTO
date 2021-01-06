@@ -19,6 +19,8 @@
         <link href="/css/navbar.css" rel="stylesheet" type="text/css">
         <link href="/css/home-posts.css" rel="stylesheet" type="text/css">
         
+
+        
     </head>
     <body>
         <%- include('partials/nav') %>
@@ -65,15 +67,49 @@
                     <i class="fa fa-2x fa-thumbs-down dislike-icon" onmouseover="appear('<%=i%>' )" onmouseout="disappear('<%=i%>')" aria-hidden="true"></i>
                 </div>
             </div>
+            <div class="row">
+                <button onclick="actOnPost(event);"
+                        data-post-id="<%=postagem._id%>">Like
+                </button>
+                <span id="likes-count-<%=postagem._id%>"><%=Object.keys(postagem.likes).length;%></span>
+            </div>   
         </div>
+       
         
         
         <%i++;%>
         <%}) %>
-            
+          
     
-    
+    <!--Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+        var updatePostStats = {
+            Like: function (postId) {
+                document.querySelector('#likes-count-' + postId).textContent++;
+            },
+            Unlike: function(postId) {
+                document.querySelector('#likes-count-' + postId).textContent--;
+            }
+        };
+
+        var toggleButtonText = {
+            Like: function(button) {
+                button.textContent = "Unlike";
+            },
+            Unlike: function(button) {
+                button.textContent = "Like";
+            }
+        };
+
+        var actOnPost = function (event) {
+            var postId = event.target.dataset.postId;
+            var action = event.target.textContent.trim();
+            toggleButtonText[action](event.target);
+            updatePostStats[action](postId);
+            axios.post('/posts/' + postId + '/act', { action: action });
+        };
+
         function appear(index){
             
             
