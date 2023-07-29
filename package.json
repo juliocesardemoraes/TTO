@@ -21,7 +21,7 @@
     "animate.css": "^4.1.1",
     "bootstrap-icons": "^1.2.2",
     "cookie-session": "^1.4.0",
-    "ejs": "^3.1.5",
+    "ejs": "^3.1.7",
     "express": "^4.17.1",
     "mongoose": "^5.13.20",
     "nodemon": "^2.0.6",
